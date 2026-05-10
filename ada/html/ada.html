@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expediente del Amor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <div class="hearts-container" id="heartsContainer"></div>
+  <div class="flowers-container" id="flowersContainer"></div>
+  <canvas id="fireworks"></canvas>
+
+  <div class="particles" id="particles"></div>
+
+  <div class="intro-screen" id="introScreen">
+
+    <div class="intro-content">
+
+      <div class="intro-ring"></div>
+      <div class="intro-ring2"></div>
+
+      <img
+        src="../assets/img/adaprincipal.jpeg"
+        class="intro-photo"
+        alt="Ada"
+      >
+
+      <h2 class="intro-title">Para Mi Ada ❤️</h2>
+
+      <p class="intro-text">
+        Existe un expediente secreto que contiene todas las pruebas de cuánto te amo.
+      </p>
+
+      <button type="button" class="enter-btn" onclick="openExperience()">
+        Abrir Expediente
+      </button>
+
+    </div>
+
+  </div>
+
+  <main id="mainContent" style="display:none;">
+
+    <header>
+
+      <div>
+
+        <div class="badge">
+          Expediente Clasificado • Caso #LOVE_FOREVER
+        </div>
+
+        <h1>
+          <span id="typingText"></span>
+        </h1>
+
+        <p class="subtitle">
+          Entre códigos, sueños, juicios y proyectos...
+          llegaste a convertirte en la persona más especial de mi vida.
+        </p>
+
+        <div class="countdown">
+
+          <div class="count-box">
+            <h3 id="days">00</h3>
+            <span>Días</span>
+          </div>
+
+          <div class="count-box">
+            <h3 id="hours">00</h3>
+            <span>Horas</span>
+          </div>
+
+          <div class="count-box">
+            <h3 id="minutes">00</h3>
+            <span>Min</span>
+          </div>
+
+          <div class="count-box">
+            <h3 id="seconds">00</h3>
+            <span>Seg</span>
+          </div>
+
+        </div>
+
+        <p id="countdownMessage" class="countdown-msg" hidden></p>
+
+        <div class="btns">
+
+          <button type="button" class="btn btn-primary" onclick="scrollToSection('historia')">
+            Nuestra Historia
+          </button>
+
+          <button type="button" class="btn btn-secondary" onclick="showMessage()">
+            Abrir Evidencia
+          </button>
+
+        </div>
+
+      </div>
+
+    </header>
+
+    <section id="historia">
+
+      <h2 class="title">Nuestra Historia</h2>
+
+      <p class="desc">
+        Cada momento contigo se convirtió en una prueba más de que el amor verdadero sí existe.
+      </p>
+
+      <div class="glass timeline">
+
+        <div class="timeline-item reveal">
+          <div class="time">Inicio</div>
+          <h3>El primer mensaje</h3>
+          <p>Lo que parecía algo normal terminó cambiando mi vida.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="time">Después</div>
+          <h3>Las desveladas</h3>
+          <p>Tú estudiando leyes y yo programando, pero siempre juntos.</p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="time">Ahora</div>
+          <h3>Mi persona favorita</h3>
+          <p>Tú siempre serás mi lugar seguro ❤️</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <h2 class="title">Galería de Fotos</h2>
+
+      <p class="desc">
+        Aquí viven algunos de mis recuerdos favoritos contigo.
+      </p>
+
+      <div class="gallery">
+        <img src="../assets/img/ada1.png" alt="Recuerdo 1">
+        <img src="../assets/img/ada2.png" alt="Recuerdo 2">
+        <img src="../assets/img/ada3.png" alt="Recuerdo 3">
+        <img src="../assets/img/image.png" alt="Recuerdo 4">
+      </div>
+
+    </section>
+
+    <section id="juego-corazones">
+
+      <h2 class="title">Atrapa corazones ❤️</h2>
+
+      <p class="desc">
+        En <strong>30 segundos</strong>, mueve la canasta con el mouse o el dedo y atrapa todos los corazones que puedas.
+        Al terminar verás cuántos recolectaste para reclamar tu premio.
+      </p>
+
+      <div class="glass reveal">
+
+        <div class="heart-game-hud">
+          <span>Tiempo: <span id="gameTimeLeft">30</span> s</span>
+          <span>Corazones: <span id="gameScore">0</span></span>
+        </div>
+
+        <div class="heart-game-area" id="heartGameArea">
+          <div class="heart-catcher" id="heartCatcher"></div>
+        </div>
+
+        <div class="btns" style="margin-top:18px;">
+          <button type="button" class="btn btn-primary" id="startHeartGame">
+            Comenzar juego
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="ruleta-comida" class="food-wheel-section">
+
+      <h2 class="title">Ruleta de comida 🍽️</h2>
+
+      <p class="desc">
+        Gira la ruleta y descubre qué antojo le toca hoy invitarle.
+      </p>
+
+      <div class="glass reveal">
+
+        <div class="food-wheel-wrap">
+
+          <div class="food-pointer" aria-hidden="true"></div>
+
+          <div class="food-wheel" id="foodWheel">
+            <div class="food-wheel-inner" id="foodWheelInner">¡Gira la ruleta!</div>
+          </div>
+
+        </div>
+
+        <div class="food-spin-row">
+          <button type="button" class="btn btn-primary" id="spinFoodBtn">
+            Girar ruleta
+          </button>
+        </div>
+
+        <p class="food-result" id="foodResult">
+          Pique, Salchipapa, Kindong, Silpancho, Sopa de maní, Hamburguesa, Ramen o Comida sorpresa… ¿cuál saldrá?
+        </p>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <h2 class="title">Nuestro Video</h2>
+
+      <p class="desc">
+        Un espacio para guardar recuerdos especiales ❤️
+      </p>
+
+      <div class="video-box reveal">
+
+        <video controls playsinline>
+          <source src="../assets/videos/video1.mp4" type="video/mp4">
+        </video>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <h2 class="title">¿Por Qué Eres Especial?</h2>
+
+      <div class="cards">
+
+        <div class="card reveal">
+          <div class="icon">⚖️</div>
+          <h3>Inteligente</h3>
+          <p>Tu forma de pensar me inspira cada día.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon">💻</div>
+          <h3>Mi Motivación</h3>
+          <p>Tú haces que incluso los días difíciles valgan la pena.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="icon">❤️</div>
+          <h3>Inolvidable</h3>
+          <p>No existe algoritmo capaz de calcular cuánto significas para mí.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <div class="love-chat reveal">
+
+        <h2 class="title">Chat del Amor IA ❤️</h2>
+
+        <div class="chat-message">
+          👩‍⚖️ Ada: ¿Por qué me amas?
+        </div>
+
+        <div class="chat-message">
+          👨‍💻 Tú: Porque incluso en mis peores días, tú haces que todo tenga sentido.
+        </div>
+
+        <div class="chat-message">
+          🤖 IA del Amor: Compatibilidad detectada: 100% ❤️
+        </div>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <div class="glass reveal">
+
+        <h2 class="title">Carta Digital</h2>
+
+        <p class="letter">
+          Hoy no solo cumple años una futura gran abogada...
+          también cumple años la mujer que logró cambiar mi vida.
+          <br><br>
+          Gracias por cada sonrisa, cada consejo y cada momento.
+          <br><br>
+          Feliz cumpleaños mi amor ❤️
+        </p>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <div class="quote reveal">
+        “Después de analizar todas las pruebas,
+        el tribunal del corazón ha determinado que
+        <span class="highlight">eres el amor de mi vida.</span>”
+      </div>
+
+      <p class="music-intro reveal">Nuestra canción ❤️ — reproduce el video para escucharla.</p>
+
+      <div class="youtube-box reveal">
+        <iframe
+          src="https://www.youtube.com/embed/7XPmRUp_Yf4"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+    </section>
+
+    <footer>
+
+      <div class="final-box reveal">
+
+        <h2>Veredicto Final</h2>
+
+        <p>
+          Declarada culpable de robarse mi corazón para siempre ❤️
+        </p>
+
+      </div>
+
+    </footer>
+
+  </main>
+
+  <div class="game-overlay" id="heartGameOverlay" role="dialog" aria-modal="true" aria-labelledby="overlayHeartTitle">
+
+    <div class="game-overlay-card">
+
+      <h3 id="overlayHeartTitle">¡Tiempo cumplido!</h3>
+
+      <p>
+        Recolectaste <strong><span id="overlayHeartScore">0</span></strong> corazones.
+        Enseña este resultado para reclamar tu premio ❤️🎁
+      </p>
+
+      <button type="button" class="btn btn-primary" id="closeHeartOverlay">
+        Cerrar
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="../js/main.js" defer></script>
+
+</body>
+</html>
