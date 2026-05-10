@@ -158,8 +158,61 @@
     });
   }
 
+  function openEvidenceModal(){
+
+    const overlay = document.getElementById('evidenceOverlay');
+    if(!overlay){
+      return;
+    }
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = document.getElementById('closeEvidenceModal');
+    if(closeBtn){
+      closeBtn.focus();
+    }
+
+  }
+
+  function closeEvidenceModal(){
+
+    const overlay = document.getElementById('evidenceOverlay');
+    if(!overlay){
+      return;
+    }
+
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+
+  }
+
   function showMessage(){
-    window.alert('⚖️ Expediente abierto exitosamente\n\nResultado final:\nElla es el amor de tu vida ❤️');
+    openEvidenceModal();
+  }
+
+  function initEvidenceModal(){
+
+    const overlay = document.getElementById('evidenceOverlay');
+    const backdrop = document.getElementById('evidenceOverlayBackdrop');
+    const closeBtn = document.getElementById('closeEvidenceModal');
+
+    if(closeBtn){
+      closeBtn.addEventListener('click', closeEvidenceModal);
+    }
+
+    if(backdrop){
+      backdrop.addEventListener('click', closeEvidenceModal);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        const el = document.getElementById('evidenceOverlay');
+        if(el && el.classList.contains('open')){
+          closeEvidenceModal();
+        }
+      }
+    });
+
   }
 
   const particlesContainer = document.getElementById('particles');
@@ -607,6 +660,7 @@
   initParticles();
   initFoodWheel();
   initHeartGame();
+  initEvidenceModal();
 
   window.openExperience = openExperience;
   window.scrollToSection = scrollToSection;

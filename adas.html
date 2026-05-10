@@ -3,295 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdaTok ❤️</title>
+  <title>AdaTok ❤️ — Feed lateral</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
-
-    body{
-      background:#050816;
-      overflow-x:hidden;
-      color:white;
-    }
-
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top left,#ff008055,transparent 25%),
-      radial-gradient(circle at bottom right,#00d9ff55,transparent 25%),
-      #050816;
-      z-index:-3;
-    }
-
-    .particles{
-      position:fixed;
-      inset:0;
-      overflow:hidden;
-      z-index:-2;
-    }
-
-    .particle{
-      position:absolute;
-      width:4px;
-      height:4px;
-      border-radius:50%;
-      background:white;
-      opacity:.5;
-      animation:float 10s linear infinite;
-    }
-
-    @keyframes float{
-      from{ transform:translateY(100vh); }
-      to{ transform:translateY(-10vh); }
-    }
-
-    .cats{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      overflow:hidden;
-      z-index:-1;
-    }
-
-    .cat{
-      position:absolute;
-      font-size:28px;
-      animation:fallCat linear forwards;
-    }
-
-    @keyframes fallCat{
-      from{
-        transform:translateY(-10vh) rotate(0deg);
-      }
-      to{
-        transform:translateY(120vh) rotate(360deg);
-      }
-    }
-
-    .intro{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:25px;
-      position:relative;
-    }
-
-    .intro-card{
-      width:100%;
-      max-width:380px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.1);
-      backdrop-filter:blur(15px);
-      border-radius:35px;
-      padding:35px 25px;
-      box-shadow:0 10px 50px rgba(0,0,0,.5);
-      animation:show 1s ease;
-    }
-
-    @keyframes show{
-      from{
-        opacity:0;
-        transform:translateY(50px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    .profile{
-      width:150px;
-      height:150px;
-      object-fit:cover;
-      border-radius:50%;
-      border:5px solid rgba(255,255,255,.2);
-      box-shadow:0 0 40px #ff0080;
-      animation:pulse 3s infinite;
-    }
-
-    @keyframes pulse{
-      0%,100%{ transform:scale(1); }
-      50%{ transform:scale(1.06); }
-    }
-
-    .intro h1{
-      margin-top:25px;
-      font-size:2.5rem;
-      background:linear-gradient(to right,#fff,#ff4da6,#66e0ff);
-      -webkit-background-clip:text;
-      background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .intro p{
-      margin-top:15px;
-      line-height:1.8;
-      color:#ddd;
-    }
-
-    .start-btn{
-      margin-top:30px;
-      width:100%;
-      padding:18px;
-      border:none;
-      border-radius:20px;
-      background:linear-gradient(45deg,#ff0080,#ff4da6);
-      color:white;
-      font-size:1rem;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow:0 10px 40px rgba(255,0,128,.5);
-    }
-
-    .feed{
-      display:none;
-    }
-
-    .screen{
-      min-height:100vh;
-      padding:25px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      position:relative;
-    }
-
-    .glass{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.1);
-      backdrop-filter:blur(14px);
-      border-radius:30px;
-      padding:25px;
-    }
-
-    .screen-title{
-      font-size:2.3rem;
-      line-height:1.2;
-      margin-bottom:20px;
-    }
-
-    .typing{
-      min-height:140px;
-      background:linear-gradient(to right,#fff,#ff4da6,#66e0ff);
-      -webkit-background-clip:text;
-      background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .chips{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:20px;
-    }
-
-    .chip{
-      padding:10px 18px;
-      border-radius:50px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.1);
-    }
-
-    .gossip-card{
-      margin-top:20px;
-      padding:20px;
-      border-radius:25px;
-      background:linear-gradient(135deg,#ff008020,#00d9ff20);
-      border:1px solid rgba(255,255,255,.1);
-    }
-
-    .food-wheel{
-      margin:30px auto;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      border:8px solid rgba(255,255,255,.1);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-size:3rem;
-      animation:spinSlow 8s linear infinite;
-      background:rgba(255,255,255,.04);
-      box-shadow:0 0 50px rgba(255,0,128,.3);
-    }
-
-    @keyframes spinSlow{
-      from{ transform:rotate(0deg); }
-      to{ transform:rotate(360deg); }
-    }
-
-    .game-area{
-      margin-top:20px;
-      height:300px;
-      border-radius:25px;
-      background:rgba(255,255,255,.05);
-      position:relative;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.1);
-    }
-
-    .heart-game{
-      position:absolute;
-      font-size:30px;
-      cursor:pointer;
-      animation:pop .5s;
-    }
-
-    @keyframes pop{
-      from{ transform:scale(0); }
-      to{ transform:scale(1); }
-    }
-
-    .score{
-      margin-top:15px;
-      text-align:center;
-      font-size:1.2rem;
-    }
-
-    .cat-box{
-      display:flex;
-      align-items:center;
-      gap:15px;
-      margin-top:20px;
-      padding:20px;
-      border-radius:25px;
-      background:rgba(255,255,255,.05);
-    }
-
-    .cat-avatar{
-      font-size:4rem;
-      animation:floatCat2 2s ease-in-out infinite;
-    }
-
-    @keyframes floatCat2{
-      0%,100%{ transform:translateY(0); }
-      50%{ transform:translateY(-10px); }
-    }
-
-    .footer-message{
-      text-align:center;
-      font-size:1.8rem;
-      line-height:1.7;
-      padding-bottom:50px;
-    }
-
-  </style>
+  <link rel="stylesheet" href="css/adastok.css">
 </head>
-<body>
+<body class="adatok">
+
+  <nav class="adatok-nav" aria-label="Navegación">
+    <a href="index.html">← Expediente del Amor</a>
+    <span class="adatok-nav-brand">AdaTok</span>
+  </nav>
 
   <div class="particles" id="particles"></div>
   <div class="cats" id="cats"></div>
@@ -301,18 +26,20 @@
     <div class="intro-card">
 
       <img
-        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop"
+        src="assets/img/adaprincipal.jpeg"
         class="profile"
+        alt="Ada"
       >
 
       <h1>AdaTok ❤️</h1>
 
       <p>
-        Una experiencia hecha para la chica que ama TikTok, los gatos, los chismes y la comida.
+        Este es el feed divertido: sin repetir la historia ni las sorpresas del expediente principal.
+        Aquí solo hay chismes ficticios, gatos cayendo y buena onda.
       </p>
 
-      <button class="start-btn" onclick="startExperience()">
-        Entrar al Mundo de Ada ✨
+      <button type="button" class="start-btn" onclick="startExperience()">
+        Entrar al feed ✨
       </button>
 
     </div>
@@ -328,14 +55,13 @@
         <h2 class="screen-title typing" id="typing"></h2>
 
         <p>
-          Bienvenida al feed más especial del universo ❤️
+          Contenido exclusivo de esta página: nada de galería, carta ni música aquí — eso está en el Expediente del Amor ❤️
         </p>
 
         <div class="chips">
-          <div class="chip">🐱 Cat Lover</div>
-          <div class="chip">📱 TikTok Girl</div>
-          <div class="chip">🍔 Food Queen</div>
-          <div class="chip">😂 Chismes</div>
+          <div class="chip">🐱 Gatos mode</div>
+          <div class="chip">😂 Chismes fake</div>
+          <div class="chip">📱 Feed paralelo</div>
         </div>
 
       </div>
@@ -368,46 +94,6 @@
 
       <div class="glass">
 
-        <h2 class="screen-title">Detector de Antojos 🍟</h2>
-
-        <div class="food-wheel" id="foodWheel">
-          🍕
-        </div>
-
-        <button class="start-btn" onclick="changeFood()">
-          Elegir Comida
-        </button>
-
-        <p style="margin-top:20px;text-align:center" id="foodResult">
-          Hoy toca invitarle comida ❤️
-        </p>
-
-      </div>
-
-    </section>
-
-    <section class="screen">
-
-      <div class="glass">
-
-        <h2 class="screen-title">Mini Juego ❤️</h2>
-
-        <p>Toca todos los corazones que puedas.</p>
-
-        <div class="game-area" id="gameArea"></div>
-
-        <div class="score">
-          Puntos: <span id="score">0</span>
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="screen">
-
-      <div class="glass">
-
         <h2 class="screen-title">Mascota Virtual 🐱</h2>
 
         <div class="cat-box">
@@ -415,9 +101,9 @@
           <div class="cat-avatar">🐱</div>
 
           <div>
-            <h3>Michi del Amor</h3>
+            <h3>Michi del feed</h3>
             <p>
-              Dice que eres la niña más hermosa del mundo ❤️
+              Dice que aquí solo hay buena vibra — para lo emotivo ya tienes el otro enlace ❤️
             </p>
           </div>
 
@@ -429,10 +115,16 @@
 
     <section class="screen">
 
-      <div class="footer-message">
-        Después de analizar TikToks, gatos, comida y millones de sonrisas...
-        <br><br>
-        el resultado final es que tú eres mi persona favorita ❤️
+      <div class="glass cta-card">
+
+        <p>
+          ¿Quieres la historia completa, fotos, vídeo, ruleta, juego y la canción?
+          <br><br>
+          Todo eso vive en la página principal del expediente.
+        </p>
+
+        <a href="index.html" class="start-btn">Ir al Expediente del Amor ❤️</a>
+
       </div>
 
     </section>
@@ -447,7 +139,7 @@
       typeText();
     }
 
-    const text = 'Feliz Cumpleaños\\nMi TikToker Favorita ❤️';
+    const text = 'Modo AdaTok ✨\\nFeed paralelo activado';
     let i = 0;
 
     function typeText(){
@@ -475,7 +167,7 @@
 
     const particles = document.getElementById('particles');
 
-    for(let i=0;i<150;i++){
+    for(let j=0;j<150;j++){
 
       const particle = document.createElement('div');
       particle.classList.add('particle');
@@ -505,48 +197,6 @@
       },10000);
 
     },900);
-
-    const foods = ['🍕 Pizza','🍔 Hamburguesa','🍟 Papitas','🍣 Sushi','🍦 Helado','🌮 Tacos'];
-
-    function changeFood(){
-
-      const random = foods[Math.floor(Math.random()*foods.length)];
-
-      document.getElementById('foodResult').innerHTML = `Veredicto final: ${random} ❤️`;
-
-      document.getElementById('foodWheel').innerHTML = random.split(' ')[0];
-
-    }
-
-    const gameArea = document.getElementById('gameArea');
-    const scoreText = document.getElementById('score');
-
-    let score = 0;
-
-    function createHeart(){
-
-      const heart = document.createElement('div');
-      heart.className = 'heart-game';
-      heart.innerHTML = '❤️';
-
-      heart.style.left = Math.random()*85 + '%';
-      heart.style.top = Math.random()*80 + '%';
-
-      heart.onclick = ()=>{
-        score++;
-        scoreText.innerText = score;
-        heart.remove();
-      }
-
-      gameArea.appendChild(heart);
-
-      setTimeout(()=>{
-        heart.remove();
-      },2000);
-
-    }
-
-    setInterval(createHeart,800);
 
   </script>
 
